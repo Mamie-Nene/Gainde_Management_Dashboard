@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+
 import '/src/utils/const/app_specifications/app_images.dart';
 import '/src/utils/const/routes/app_routes_name.dart';
 
@@ -14,92 +15,136 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor:  Color(0xFFF2F5F9),
       appBar: AppBar(
-        title: const Text('Gainde Management', style: TextStyle(color: Colors.black)),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications_none, color: Colors.black),
-            onPressed: () {},
+        leading: Container(
+          width: 60,
+          height: 60,
+          decoration: ShapeDecoration(
+            image: DecorationImage(
+              image: NetworkImage("https://placehold.co/67x67"),
+              fit: BoxFit.cover,
+            ),
+            shape: RoundedRectangleBorder(
+              side: const BorderSide(
+                width: 2.67,
+                strokeAlign: BorderSide.strokeAlignOutside,
+                color: Color(0xFF02566B) /* Primary-color */,
+              ),
+              borderRadius: BorderRadius.circular(133.25),
+            ),
           ),
-        ],
+        ) ,
+        title:  Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Moussa Ndiaye',
+                      style: TextStyle(
+                        color: Color(0xFF333333) /* Text-Color */,
+                        fontSize: 22.21,
+                        fontFamily: 'Nunito Sans',
+                        fontWeight: FontWeight.w600,
+                        height: 1.40,
+                      ),
+                    ),
+                    Text(
+                      'DGD',
+                      style: TextStyle(
+                        color: Color(0xFF333333) /* Text-Color */,
+                        fontSize: 16.83,
+                        fontFamily: 'Nunito Sans',
+                        fontWeight: FontWeight.w500,
+                        height: 1.40,
+                      ),
+                    )
+                  ]
+              ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body:  Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 30),
           child: ListView(
               children: [
-                // Search Bar
-                Container(
-                  margin: const EdgeInsets.only(bottom: 30,top: 10),
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: const TextField(
-                    decoration: InputDecoration(
-                      icon: Icon(Icons.search),
-                      hintText: 'Rechercher un élement',
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-                 BoardCard(
-                    title: "GIE",
-                    logo: AppImages.LOGO_GAINDE,
+                GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(AppRoutesName.gieParts);
+
+                    },
+                    child:BoardCard(
+                    title: 'GIE - GAINDE2000',
+                    logo: AppImages.GIE_SVG,
                     color: Colors.deepPurpleAccent,
                     // avatarUrl: 'https://i.pravatar.cc/40?img=3',
-                  ),
+                  )),
                 const SizedBox(height: 30),
                  GestureDetector(
                       onTap: () {
                         Navigator.of(context).pushNamed(AppRoutesName.performanceOrbus);
 
                       },
-                      child: BoardCard(title: "Performance ORBUS", logo: AppImages.LOGO_ORBUS, color: Colors.blue)),
+                      child: BoardCard(title: "Performance ORBUS", logo: AppImages.ORBUS_SVG, color: Colors.blue)),
 
                 const SizedBox(height: 30),
                  GestureDetector(
                       onTap: () {
                         Navigator.of(context).pushNamed(AppRoutesName.orbusInfinityParts);
                         },
-                      child: BoardCard(title: "Performance INFINITY", logo: AppImages.LOGO_ORBUS_INFINITY, color: Colors.purple)),
+                      child: BoardCard(title: "Performance INFINITY", logo: AppImages.ORBUS_SVG, color: Colors.purple)),
 
                 const SizedBox(height: 80),
               ],
             ),
         ),
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 6.0,
-        child: Container(
-          height: 60.0,
-          padding: const EdgeInsets.symmetric(horizontal: 32),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const <Widget>[
-              Icon(Icons.dashboard, size: 28),
-              SizedBox(width: 24),
-              Icon(Icons.person_outline, size: 28),
-            ],
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        shape: const CircleBorder(),
-        onPressed: () {},
-        backgroundColor: Colors.blue,
-        child: const Icon(Icons.add),
-      ),
+
     );
   }
 }
 
+//chat
+/*
+
+    return Scaffold(
+      backgroundColor:  Color(0xFFF2F5F9),
+
+      body:  SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ListTile(
+              leading: CircleAvatar(
+                backgroundImage: NetworkImage('https://example.com/profile.jpg'),
+                radius: 24,
+              ),
+              title: Text('Moussa Ndiaye'),
+              subtitle: Text('DGD'),
+            ),
+            Divider(),
+            _buildMenuItem(Icons.account_balance, 'GIE - GAINDE2000'),
+            _buildMenuItem(Icons.public, 'Performance ORBUS'),
+            _buildMenuItem(Icons.public, 'Performance Infinity'),
+          ],
+        ),
+      )
+    );
+
+  }
+  Widget _buildMenuItem(IconData icon, String title) {
+    return Card(
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: ListTile(
+        leading: Icon(icon, color: Colors.blue),
+        title: Text(title),
+        trailing: Icon(Icons.arrow_forward_ios, size: 16),
+        onTap: () {
+          // Navigate to section
+        },
+      ),
+    );
+  }
+ */
 class BoardCard extends StatelessWidget {
   final String title;
   final String logo;
@@ -115,35 +160,63 @@ class BoardCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 130,
-      padding: const EdgeInsets.fromLTRB(20, 12, 12, 20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        gradient: LinearGradient(
-          colors: [color.withOpacity(0.8), color.withOpacity(0.5)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+      width: double.infinity,
+      padding: const EdgeInsets.all(24),
+      decoration: ShapeDecoration(
+
+        color: Colors.white /* Color */,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
         ),
       ),
-      child: Stack(
-        children: [
-          Column(
+      child: SizedBox(
+          width: double.infinity,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 20,
             children: [
-              CircleAvatar(
-                  backgroundImage: AssetImage(logo),
-                  maxRadius: 27,
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 12,
+                children: [
+                  Container(
+                    width: 56,
+                    height: 56,
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFFF2F5F9),
+                      shape: OvalBorder(),
+                      image: DecorationImage(
+                        image: AssetImage(logo),
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
+                  Text(title,
+                    style: TextStyle(
+                      color: const Color(0xFF2C3E50),
+                      fontSize: 24,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.24,
+                    ),
+                  ),
+                ],
               ),
-              const Spacer(),
-              Text(
-                title,
-                style: const TextStyle(
-                    color: Colors.white, fontWeight: FontWeight.bold,fontSize: 20),
-              )
+               Container(
+                        width: 50,
+                        height: 50,
+                        decoration: ShapeDecoration(
+                          color: const Color(0xFFF2F5F9),
+                          shape: OvalBorder(),
+                        ),
+                 child:   Icon(Icons.arrow_forward_ios,size: 15,)
+                      ),
             ],
-          ),
-
-        ],
+          )
       ),
     );
   }

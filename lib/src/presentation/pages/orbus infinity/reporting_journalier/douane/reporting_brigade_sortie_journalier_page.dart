@@ -131,10 +131,10 @@ class _ReportingJournalierForSortieBrigadeState extends State<ReportingJournalie
                       height: MediaQuery.of(context).size.height/20,
                       decoration: BoxDecoration(
 
-                        border: Border.all(color:  isForVolumetrie?  AppColors.mainAppColor2: Colors.grey.shade400),
+                        border: Border.all(color:  isForVolumetrie?  AppColors.mainAppColor: Colors.grey.shade400),
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(10) ,bottomLeft: Radius.circular(10)),
 
-                        color: isForVolumetrie?  AppColors.mainAppColor2 : Colors.black.withOpacity(0.07),
+                        color: isForVolumetrie?  AppColors.mainAppColor : Colors.black.withOpacity(0.07),
                       ),
                       child:
                       TextButton(
@@ -161,10 +161,10 @@ class _ReportingJournalierForSortieBrigadeState extends State<ReportingJournalie
                       width: MediaQuery.of(context).size.width/2.2,
                       height: MediaQuery.of(context).size.height/20,
                       decoration: BoxDecoration(
-                        border: Border.all(color: isForVolumetrie?  Colors.grey.shade400:AppColors.mainAppColor2),
+                        border: Border.all(color: isForVolumetrie?  Colors.grey.shade400:AppColors.mainAppColor),
                         borderRadius: BorderRadius.only(topRight: Radius.circular(10) ,bottomRight: Radius.circular(10)),
 
-                        color: isForVolumetrie?Colors.black.withOpacity(0.07) : AppColors.mainAppColor2 ,
+                        color: isForVolumetrie?Colors.black.withOpacity(0.07) : AppColors.mainAppColor ,
                       ),
                       child: TextButton(
 
@@ -237,7 +237,7 @@ class _ReportingJournalierForSortieBrigadeState extends State<ReportingJournalie
                           child: IconButton(//Elevated Button
                               style:IconButton.styleFrom(
                                   shape:RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(10) ,bottomLeft: Radius.circular(10),topRight: Radius.circular(10) ,bottomRight: Radius.circular(10)),),
-                                  backgroundColor: _isRunning?Colors.grey.shade300:AppColors.mainAppColor2
+                                  backgroundColor: _isRunning?Colors.grey.shade300:AppColors.mainAppColor
                               ),
 
                               onPressed:
@@ -396,7 +396,7 @@ class _ReportingJournalierForSortieBrigadeState extends State<ReportingJournalie
                                         yValueMapper: (_ChartData data, _) => data.y,
                                         name: 'Total Journalier des Sorties Brigade ',
                                         color: Color(0xff474ce5)
-                                      // color: AppColors.mainAppColor2
+                                      // color: AppColors.mainAppColor
                                     ),
 
                                   ]
@@ -501,7 +501,7 @@ class CustomPaginatedDataTable extends StatelessWidget {
       child: PaginatedDataTable(
         horizontalMargin:14,
         columnSpacing:30,
-        arrowHeadColor:AppColors.mainAppColor2,
+        arrowHeadColor:AppColors.mainAppColor,
         header: header,
         columns: columns,
         source: source,

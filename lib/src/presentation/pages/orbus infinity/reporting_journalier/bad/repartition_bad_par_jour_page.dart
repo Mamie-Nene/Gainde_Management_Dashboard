@@ -111,11 +111,11 @@ class _RepartitionBadParJourState extends State<RepartitionBadParJour> {
                       height: MediaQuery.of(context).size.height/20,
                       decoration: BoxDecoration(
 
-                        border: Border.all(color:  isForVolumetrie?  AppColors.mainAppColor2: Colors.grey.shade400),
+                        border: Border.all(color:  isForVolumetrie?  AppColors.mainAppColor: Colors.grey.shade400),
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(10) ,bottomLeft: Radius.circular(10)),
 
-                        color: isForVolumetrie?  AppColors.mainAppColor2 : Colors.black.withOpacity(0.07),
-                        //  color: isForVisa?  AppColors.mainAppColor2 :Colors.grey.shade400,
+                        color: isForVolumetrie?  AppColors.mainAppColor : Colors.black.withOpacity(0.07),
+                        //  color: isForVisa?  AppColors.mainAppColor :Colors.grey.shade400,
                       ),
                       child:
                       TextButton(
@@ -143,11 +143,11 @@ class _RepartitionBadParJourState extends State<RepartitionBadParJour> {
                       width: MediaQuery.of(context).size.width/2.2,
                       height: MediaQuery.of(context).size.height/20,
                       decoration: BoxDecoration(
-                        border: Border.all(color: isForGraphique?  AppColors.mainAppColor2:Colors.grey.shade400),
+                        border: Border.all(color: isForGraphique?  AppColors.mainAppColor:Colors.grey.shade400),
                         borderRadius: BorderRadius.only(topRight: Radius.circular(10) ,bottomRight: Radius.circular(10)),
 
-                        color: isForGraphique?AppColors.mainAppColor2: Colors.black.withOpacity(0.07) ,
-                        //  color: isForSortie?AppColors.mainAppColor2: Colors.grey.shade400 ,
+                        color: isForGraphique?AppColors.mainAppColor: Colors.black.withOpacity(0.07) ,
+                        //  color: isForSortie?AppColors.mainAppColor: Colors.grey.shade400 ,
                       ),
                       child: TextButton(
 
@@ -224,12 +224,12 @@ class _RepartitionBadParJourState extends State<RepartitionBadParJour> {
                             style: ElevatedButton.styleFrom(
                                 shape:RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(10) ,bottomLeft: Radius.circular(10),topRight: Radius.circular(10) ,bottomRight: Radius.circular(10)),),
 
-                                backgroundColor: _isRunning?Colors.grey.shade300:AppColors.mainAppColor2
+                                backgroundColor: _isRunning?Colors.grey.shade300:AppColors.mainAppColor
                             ),*/
                           IconButton(//Elevated Button
                               style:IconButton.styleFrom(
                                   shape:RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(10) ,bottomLeft: Radius.circular(10),topRight: Radius.circular(10) ,bottomRight: Radius.circular(10)),),
-                                  backgroundColor: _isRunning?Colors.grey.shade300:AppColors.mainAppColor2
+                                  backgroundColor: _isRunning?Colors.grey.shade300:AppColors.mainAppColor
                               ),
                             onPressed: _isRunning?null:()async{
                               setState(() {

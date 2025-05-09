@@ -51,7 +51,7 @@ class _ReportingJournalierOrbusInfinityPageState extends State<ReportingJournali
                         child: Text('Voir plus',
                           style: TextStyle(
                             fontSize: MediaQuery.textScaleFactorOf(context)*15,
-                            color: AppColors.mainAppColor2 ,
+                            color: AppColors.mainAppColor ,
                             //  color: Color(0xff1a3981),
                           ),
                         )
@@ -119,7 +119,7 @@ class _ReportingJournalierOrbusInfinityPageState extends State<ReportingJournali
                             Text(entries[index],
                               style: TextStyle(
                                   fontSize: MediaQuery.textScaleFactorOf(context)*18,
-                                  color: AppColors.mainAppColor2,
+                                  color: AppColors.mainAppColor,
                                   fontWeight: FontWeight.w400
                               ),
                             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gainde_management_dashboard/src/presentation/pages/auth/login.dart';
 import '/src/presentation/pages/home_pages.dart';
 
 
@@ -31,7 +32,7 @@ class _SplashPageState extends State<SplashPage> {
           logo: Image.asset(AppImages.LOGO_GAINDE),
          // logo: Image.asset(AppImages.LOGO,scale: 3,),
 
-          done: Done(const MyHomePage()),
+          done: Done(const LoginPage()),
 
           loadingIndicator: LinearProgressIndicator(color: AppColors.mainAppColor,),
 

@@ -14,8 +14,16 @@ class CustomFormTextFieldForUsername extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SizedBox(
-      width: MediaQuery.of(context).size.width/1.2,
+    return  Container(
+     // width: MediaQuery.of(context).size.width/1.2,
+      width: double.infinity,
+      clipBehavior: Clip.antiAlias,
+      decoration: ShapeDecoration(
+        color: const Color(0xFFF4F6F9),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+      ),
       child: TextFormField(
         // textAlign : TextAlign.center,
           controller: controller,
@@ -29,23 +37,14 @@ class CustomFormTextFieldForUsername extends StatelessWidget {
             return null;
           },
           decoration:   InputDecoration(
-              border: const OutlineInputBorder() ,
-              enabledBorder:  OutlineInputBorder(
-                borderSide: BorderSide(
-                  color:AppColors.mainAppColor,
-                  width: 1.0,
-                ),
-              ),
-              fillColor:Colors.white,
-              filled: true,
-              contentPadding:  EdgeInsets.fromLTRB(AppDimensions.sizeboxWidth20, 0, AppDimensions.sizeboxWidth20, 0),
+             // fillColor:Colors.grey.shade100, filled: true,
+              contentPadding:  const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
               // border: InputBorder.none,
               labelStyle:  const TextStyle(
-                fontFamily: 'Roboto',
-                color: Color(0xff000000),
+                color: const Color(0xFFAFB7C7),
                 fontSize: 14,
-                fontWeight: FontWeight.w400,
-                fontStyle: FontStyle.normal,
+                fontFamily: 'Lato',
+                fontWeight: FontWeight.w500,
               ),
               labelText : placeholder
 
@@ -66,42 +65,47 @@ class CustomFormTextFieldForPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  TextFormField(
-      // textAlign : TextAlign.center,
-        controller: controller,
-        keyboardType: TextInputType.text,
-        inputFormatters:[FilteringTextInputFormatter.deny(RegExp(r'\s'))] ,
-        obscureText: !passwordVisible,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Veuillez remplir ce champs';
-          }
-          return null;
-        },
-        decoration:   InputDecoration(
-            suffixIcon:  action,
-            border: const OutlineInputBorder() ,
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: AppColors.mainAppColor,
-                width: 1.0,
-              ),
-            ),
-            fillColor:Colors.white,
-            filled: true,
-            contentPadding:  EdgeInsets.fromLTRB(AppDimensions.sizeboxWidth20, 0, AppDimensions.sizeboxWidth20, 0),
-            // border: InputBorder.none,
-            labelStyle:  const TextStyle(
-              fontFamily: 'Roboto',
-              color: Color(0xff000000),
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-              fontStyle: FontStyle.normal,
-            ),
-            labelText : placeholder
+    return  Container(
+     // width: MediaQuery.of(context).size.width/1.2,
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+      clipBehavior: Clip.antiAlias,
+      decoration: ShapeDecoration(
+        color: const Color(0xFFF4F6F9),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+      ),
+      child: TextFormField(
+        // textAlign : TextAlign.center,
+          controller: controller,
+          keyboardType: TextInputType.text,
+          inputFormatters:[FilteringTextInputFormatter.deny(RegExp(r'\s'))] ,
+          obscureText: !passwordVisible,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Veuillez remplir ce champs';
+            }
+            return null;
+          },
+          decoration:   InputDecoration(
+              suffixIcon:  action,
 
-        )
+             // fillColor:Colors.grey.shade100,
+              //filled: true,
+              contentPadding:  EdgeInsets.fromLTRB(AppDimensions.sizeboxWidth20, 0, AppDimensions.sizeboxWidth20, 0),
+              // border: InputBorder.none,
+              labelStyle:  const TextStyle(
+                  color: const Color(0xFFAFB7C7),
+                  fontSize: 14,
+                  fontFamily: 'Lato',
+                  fontWeight: FontWeight.w500,
+              ),
+              labelText : placeholder
+
+          )
+      ),
     );
   }
 }

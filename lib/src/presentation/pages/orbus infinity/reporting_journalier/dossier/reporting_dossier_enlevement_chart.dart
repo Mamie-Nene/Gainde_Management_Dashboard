@@ -95,7 +95,7 @@ class _ChartForReportingDossierEnlevementState extends State<ChartForReportingDo
                     yValueMapper: (_ChartData data, _) => data.y,
                     name: 'Total Dossier Enlèvement Journalier',
                     color: Color(0xff474ce5)
-                  // color: AppColors.mainAppColor2
+                  // color: AppColors.mainAppColor
                 ),
 
               ]

@@ -16,9 +16,12 @@ class AppRoutesName{
 
   static const String orbusInfinityParts= '/orbusInfinityParts';
   static const String myOrbusParts= '/myOrbusParts';
+  static const String gieParts= '/gieParts';
+
   static const String performanceOrbus= '/myOrbusParts';
   static const String polePublicOrbus= '/polePublicOrbus';
   static const String deec= '/deec';
+
 
 
 

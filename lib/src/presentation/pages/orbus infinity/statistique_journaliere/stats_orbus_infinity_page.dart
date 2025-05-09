@@ -57,7 +57,7 @@ class _StatistiquesOrbusInfinityPageState extends State<StatistiquesOrbusInfinit
   Widget build(BuildContext context) {
     List<String> type = ["Dossiers",'Visas PAD','BAE','DO','BAD','Sorties'];
     List<String> valuesGetted = ["5000",'1000','3000','3000','3000','3000'];
-    List<Color> colors= [AppColors.mainAppColor2, Color(0xff474ce5),Colors.purple,Color(0xff4C5CBE),Color(0xff5D99F4),AppColors.mainGreenColor,];
+    List<Color> colors= [AppColors.mainAppColor, Color(0xff474ce5),Colors.purple,Color(0xff4C5CBE),Color(0xff5D99F4),AppColors.mainGreenColor,];
 
     return  SingleChildScrollView(
 
@@ -200,7 +200,7 @@ class _StatistiquesOrbusInfinityPageState extends State<StatistiquesOrbusInfinit
                           child: Text('Voir plus',
                             style: TextStyle(
                               fontSize: MediaQuery.textScaleFactorOf(context)*15,
-                              color: AppColors.mainAppColor2 ,
+                              color: AppColors.mainAppColor ,
                               //  color: Color(0xff1a3981),
                             ),
                           )
@@ -274,7 +274,7 @@ class _StatistiquesOrbusInfinityPageState extends State<StatistiquesOrbusInfinit
                             Text(entries[index],
                               style: TextStyle(
                                   fontSize: MediaQuery.textScaleFactorOf(context)*18,
-                                  color: AppColors.mainAppColor2,
+                                  color: AppColors.mainAppColor,
                                   fontWeight: FontWeight.w400
                               ),
                             ),

@@ -27,7 +27,7 @@ class AppResponseMessage  {
   }
 
   void loadingMessage(String waitingMessage){
-    createToastMessage(AppColors.mainAppColor2,waitingMessage,Colors.white);
+    createToastMessage(AppColors.mainTitleColor,waitingMessage,Colors.white);
   }
 
   Future successAlertDialog(context,function,msg) {
@@ -143,12 +143,12 @@ class AppResponseMessage  {
                   TextButton(
                       onPressed:actionForYes,
                       //onPressed:()=> Navigator.of(context).pushNamed(routeForYes),
-                      child: Text('OUI',style: TextStyle(color:AppColors.mainAppColor2,fontSize: MediaQuery.textScaleFactorOf(context)*17),)//20
+                      child: Text('OUI',style: TextStyle(color:AppColors.mainAppColor,fontSize: MediaQuery.textScaleFactorOf(context)*17),)//20
                   ),
                   TextButton(
                     // onPressed:()=>Navigator.of(context).pop(),
                       onPressed:()=> Navigator.of(context).pop(false),
-                      child: Text('NON',style: TextStyle(color:AppColors.mainAppColor2,fontSize: MediaQuery.textScaleFactorOf(context)*17),)
+                      child: Text('NON',style: TextStyle(color:AppColors.mainAppColor,fontSize: MediaQuery.textScaleFactorOf(context)*17),)
                   )
                 ],
                 actionsAlignment: MainAxisAlignment.end
