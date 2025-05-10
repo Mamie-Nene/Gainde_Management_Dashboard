@@ -20,7 +20,8 @@ class AppRoutesName{
 
   static const String performanceOrbus= '/myOrbusParts';
   static const String polePublicOrbus= '/polePublicOrbus';
-  static const String deec= '/deec';
+  static const String ascex= '/ascex';
+  static const String consignataire= '/consignataire';
 
 
 

@@ -17,10 +17,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor:  Color(0xFFF2F5F9),
-      appBar: AppBar(
+    /*  appBar: AppBar(
         leading: Container(
-          width: 60,
-          height: 60,
+          width: 40,
+          height: 40,
           decoration: ShapeDecoration(
             image: DecorationImage(
               image: NetworkImage("https://placehold.co/67x67"),
@@ -63,15 +63,76 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-      ),
+      ),*/
       body:  Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 30),
           child: ListView(
               children: [
+                SizedBox(
+                  width: 276,
+                  height: 100,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    spacing: 13.88,
+                    children: [
+                      Container(
+                        width: 66.63,
+                        height: 66.63,
+                        decoration: ShapeDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("asset/images/user.png"),
+                            fit: BoxFit.cover,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              width: 2.67,
+                              strokeAlign: BorderSide.strokeAlignOutside,
+                              color: const Color(0xFF02566B) /* Primary-color */,
+                            ),
+                            borderRadius: BorderRadius.circular(133.25),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 182,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Moussa Ndiaye',
+                              style: TextStyle(
+                                color: const Color(0xFF333333) /* Text-Color */,
+                                fontSize: 22.21,
+                                fontFamily: 'Nunito Sans',
+                                fontWeight: FontWeight.w600,
+                                height: 1.40,
+                              ),
+                            ),
+                            Text(
+                              'DGD',
+                              style: TextStyle(
+                                color: const Color(0xFF333333) /* Text-Color */,
+                                fontSize: 16.83,
+                                fontFamily: 'Nunito Sans',
+                                fontWeight: FontWeight.w500,
+                                height: 1.40,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 30),
+
                 GestureDetector(
                     onTap: () {
                       Navigator.of(context).pushNamed(AppRoutesName.gieParts);
-
                     },
                     child:BoardCard(
                     title: 'GIE - GAINDE2000',
@@ -80,6 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     // avatarUrl: 'https://i.pravatar.cc/40?img=3',
                   )),
                 const SizedBox(height: 30),
+
                  GestureDetector(
                       onTap: () {
                         Navigator.of(context).pushNamed(AppRoutesName.performanceOrbus);
@@ -181,11 +243,11 @@ class BoardCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 12,
+                spacing: 25,
                 children: [
                   Container(
-                    width: 56,
-                    height: 56,
+                    width: 40,
+                    height: 40,
                     decoration: ShapeDecoration(
                       color: const Color(0xFFF2F5F9),
                       shape: OvalBorder(),

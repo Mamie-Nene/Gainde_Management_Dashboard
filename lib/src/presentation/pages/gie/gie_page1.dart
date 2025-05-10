@@ -1,15 +1,13 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '/src/presentation/pages/gie/reference.dart';
 import '/src/presentation/pages/gie/solution.dart';
 import '/src/utils/const/routes/app_routes_name.dart';
-
+import '/src/utils/const/app_specifications/app_colors.dart';
 import 'compte_certifier.dart';
 import 'document_juridique.dart';
-
 
 class GIEPage extends StatefulWidget {
   const GIEPage({super.key});
@@ -67,7 +65,7 @@ class _GIEPageState extends State<GIEPage> {
     List<Widget> pageList = [
       const DocumentJuridiquePage(),
       const CompteCertifierPage(),
-      const SolutionsScreen(),
+      SolutionsScreen(),
       const ReferencePage(),
 
     ];
@@ -89,7 +87,10 @@ class _GIEPageState extends State<GIEPage> {
           elevation: 0,
           leading: const BackButton(color: Colors.black),
           centerTitle:true,
-          title: const Text(
+          title: const Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
                 'GIE Gainde2000',
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -99,167 +100,59 @@ class _GIEPageState extends State<GIEPage> {
                   fontWeight: FontWeight.w600,
                   letterSpacing: 0.32,
                 ),
+              ),
+              Text(
+                'Documents juridiques',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xB2333333),
+                  fontSize: 20,
+                  fontFamily: 'Lato',
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0.20,
+                ),
+              )
+            ],
           ),
           actions: [
             IconButton(
-              icon: const Icon(Icons.search, color: Colors.black,size: 40,),
+              icon: const Icon(Icons.search, color: Colors.black),
               onPressed: () {},
             ),
           ],
-
         ),
         body:pageList.elementAt(_currentIndex),
         bottomNavigationBar:BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          backgroundColor: const Color(0xFF1F5DAB),
+          backgroundColor: const Color(0xFF2962FF),
           selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white.withOpacity(.60),
+          unselectedItemColor: Colors.white.withOpacity(.70),
           selectedFontSize: 16,
           unselectedFontSize: 14,
           currentIndex: _currentIndex,
           //onTap: onItemTapped,
           onTap: (index) => onItemTapped(index, context), // Pass context to the function
 
-          items: [
+          items: const [
             BottomNavigationBarItem(
-              icon: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-                decoration: ShapeDecoration(
-                  color: _currentIndex==0? Colors.white:null,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 6,
-                  children: [
-                    Container(
-                        width: 24,
-                        height: 24,
-                        child: SvgPicture.asset("asset/images/solar_document-add-bold.svg",color: _currentIndex==0? Color(0xFF1F5DAB):Colors.white,)
-                    ),
-                    Text(
-                        'Docs juri.',
-                      style: TextStyle(
-                        color: _currentIndex==0? Color(0xFF1F5DAB):Colors.white,
-                        fontSize: 20,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.20,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              label: '',
+                label: 'Documents juridiques',
+                icon: Icon(Icons.file_copy_outlined)
             ),
+
             BottomNavigationBarItem(
-              icon: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-                decoration: ShapeDecoration(
-                  color: _currentIndex==1? Colors.white:null,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 6,
-                  children: [
-                    Container(
-                        width: 24,
-                        height: 24,
-                        child: SvgPicture.asset("asset/images/ant-design_solution-outlined.svg",color: _currentIndex==1? Color(0xFF1F5DAB):Colors.white,)
-                    ),
-                    Text(
-                      'Compte Cert.',
-                      style: TextStyle(
-                        color: _currentIndex==1? Color(0xFF1F5DAB):Colors.white,
-                        fontSize: 20,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.20,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              label: '',
+              label: 'Compte Cert.',
+              icon: Icon(Icons.file_copy_outlined)
             ),
+
             BottomNavigationBarItem(
-              icon: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-                decoration: ShapeDecoration(
-                  color: _currentIndex==2? Colors.white:null,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 6,
-                  children: [
-                    Container(
-                        width: 24,
-                        height: 24,
-                        child: SvgPicture.asset("asset/images/jam_document.svg",color: _currentIndex==2? Color(0xFF1F5DAB):Colors.white,)
-                    ),
-                    Text(
-                      'Solutions',
-                      style: TextStyle(
-                        color: _currentIndex==2? Color(0xFF1F5DAB):Colors.white,
-                        fontSize: 20,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.20,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              label: '',
+              label:'Solutions',
+              icon: Icon(Icons.file_copy_outlined)
             ),
+
             BottomNavigationBarItem(
-              icon: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-                decoration: ShapeDecoration(
-                  color: _currentIndex==3? Colors.white:null,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 6,
-                  children: [
-                    Container(
-                        width: 24,
-                        height: 24,
-                        child: SvgPicture.asset("asset/images/mdi_users.svg",color: _currentIndex==3? Color(0xFF1F5DAB):Colors.white,)
-                    ),
-                    Text(
-                      'Références',
-                      style: TextStyle(
-                        color: _currentIndex==3? Color(0xFF1F5DAB):Colors.white,
-                        fontSize: 20,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.20,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              label: '',
+              label: 'Références',
+              icon: Icon(CupertinoIcons.doc_on_doc_fill),
+              // icon: Icon(Icons.qr_code_scanner_outlined),
             ),
           ],
         )

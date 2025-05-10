@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gainde_management_dashboard/src/utils/const/routes/app_routes_name.dart';
+import '/src/utils/const/routes/app_routes_name.dart';
 
-import '/src/presentation/widgets/custom_textfield.dart';
 
-import '/src/utils/const/app_specifications/app_colors.dart';
-import '/src/utils/const/app_specifications/app_dimensions.dart';
 import '/src/utils/const/app_specifications/app_images.dart';
 
 class LoginPage extends StatefulWidget {
@@ -29,8 +26,8 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 200.0),
+        child: Column(
             children: [
               Container(
                 height: 106.15,
@@ -54,130 +51,131 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(height: 30,),
-              Form(
-                key: _loginKey,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 32,
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        spacing: 12,
-                        children: [
-                          Text(
-                            'Identifiant',
-                            style: TextStyle(
-                              color: const Color(0xFF646B78),
-                                        fontSize: 20,
-                                        fontFamily: 'Lato',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                                      clipBehavior: Clip.antiAlias,
-                                      decoration: ShapeDecoration(
-                                        color: const Color(0xFFF4F6F9),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(15),
+               Form(
+                    key: _loginKey,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width/1.6,
+                      child:Column(
+                     // mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      spacing: 32,
+                      children: [
+                         Column(
+                          //  mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            spacing: 12,
+                            children: [
+                              Text(
+                                'Identifiant',
+                                style: TextStyle(
+                                  color: const Color(0xFF646B78),
+                                            fontSize: 20,
+                                            fontFamily: 'Lato',
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                         ),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        spacing: 10,
-                                        children: [
-                                          Text(
-                                            'Saisir ',
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              color: const Color(0xFFAFB7C7),
-                                              fontSize: 14,
-                                              fontFamily: 'Lato',
-                                              fontWeight: FontWeight.w500,
+                              Container(
+                                          width: double.infinity,
+                                          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                                          clipBehavior: Clip.antiAlias,
+                                          decoration: ShapeDecoration(
+                                            color: const Color(0xFFF4F6F9),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(15),
                                             ),
                                           ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                    Container(
-                                width: double.infinity,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  spacing: 12,
-                                  children: [
-                                    Text(
-                                      'Mot de passe',
-                                      style: TextStyle(
-                                        color: const Color(0xFF646B78),
-                                        fontSize: 20,
-                                        fontFamily: 'Lato',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                                      clipBehavior: Clip.antiAlias,
-                                      decoration: ShapeDecoration(
-                                        color: const Color(0xFFF4F6F9),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            spacing: 10,
+                                            children: [
+                                              Text(
+                                                'Saisir ',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  color: const Color(0xFFAFB7C7),
+                                                  fontSize: 14,
+                                                  fontFamily: 'Lato',
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                            ],
+                          ),
+                         Column(
+                          // mainAxisSize: MainAxisSize.min,
+                           mainAxisAlignment: MainAxisAlignment.start,
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                           spacing: 12,
+                           children: [
+                             Text(
+                                        'Mot de passe',
+                                        style: TextStyle(
+                                          color: const Color(0xFF646B78),
+                                          fontSize: 20,
+                                          fontFamily: 'Lato',
+                                          fontWeight: FontWeight.w600,
                                         ),
                                       ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        spacing: 10,
-                                        children: [
-                                          Text(
-                                            '*********',
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              color: const Color(0xFFAFB7C7),
-                                              fontSize: 14,
-                                              fontFamily: 'Lato',
-                                              fontWeight: FontWeight.w500,
-                                            ),
+                             Container(
+                                        width: double.infinity,
+                                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                                        clipBehavior: Clip.antiAlias,
+                                        decoration: ShapeDecoration(
+                                          color: const Color(0xFFF4F6F9),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(15),
                                           ),
-                                        ],
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          spacing: 10,
+                                          children: [
+                                            Text(
+                                              '*********',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: const Color(0xFFAFB7C7),
+                                                fontSize: 14,
+                                                fontFamily: 'Lato',
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                  ],
+                           ],
+                         ),
+                      ]
+                    ),
+                    )
                 ),
-              ),
+              const SizedBox(height: 30,),
               const Align(
                     alignment: Alignment.centerRight,
-                    child: Text(
-                          'Mot de passe oublié ?',
-                          style: TextStyle(
-                            color: Color(0xFF02566B),
-                            fontSize: 14,
-                            fontFamily: 'Lato',
-                            fontWeight: FontWeight.w600,
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 150),
+                      child: Text(
+                            'Mot de passe oublié ?',
+                            style: TextStyle(
+                              color: Color(0xFF02566B),
+                              fontSize: 14,
+                              fontFamily: 'Lato',
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
-                        ),
+                    ),
                   ),
-
+              const SizedBox(height: 30,),
               Container(
-                      width: double.infinity,
+                width: MediaQuery.of(context).size.width/1.6,
                       height: 85,
                       padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 17),
 

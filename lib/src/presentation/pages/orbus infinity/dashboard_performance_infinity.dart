@@ -37,6 +37,7 @@ class _DashboardInfinityPageState extends State<DashboardInfinityPage> {
     }
   }
 
+  List<int> dossiersForPieSerie=[50,10,15,25,30,20];
   getData(List<String> data){
     dossierData.clear();
     for (int i = 0; i < data.length; i++) {
@@ -65,7 +66,7 @@ class _DashboardInfinityPageState extends State<DashboardInfinityPage> {
     final dateString = DateFormat('dd/MM/yyyy').format(selectedDate);
 
     List<String> filtreNames=["Période", "Du","Au"];
-    List<String> filtreValues=['Ce-mois', DateTime.now().month.toString(),DateTime.now().month.toString(),];
+    List<String> filtreValues=['Ce-mois', '06/05/2024','06/05/2024'];
     List<String> filtreIcons=['ion_caret-down-outline','Icon','Icon'];
 
     List<String> titles=["Consignataires", "Manutentionnaires","Transporteurs","Entreprises","PGA","OGA"];
@@ -79,7 +80,7 @@ class _DashboardInfinityPageState extends State<DashboardInfinityPage> {
           child: Column(
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height/10,
+                height: MediaQuery.of(context).size.height/13,
                 width: MediaQuery.of(context).size.width,
                 child: GridView.builder(
                   itemCount:filtreNames.length,
@@ -131,7 +132,7 @@ class _DashboardInfinityPageState extends State<DashboardInfinityPage> {
                       ),
                     );
                   },
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,//nbre de colone
                     childAspectRatio: 4 / 1.3,
                     crossAxisSpacing: 20,
@@ -149,7 +150,7 @@ class _DashboardInfinityPageState extends State<DashboardInfinityPage> {
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
-                          onTap:(){Navigator.of(context).pushNamed(AppRoutesName.polePublicOrbus);},
+                          onTap:(){Navigator.of(context).pushNamed(AppRoutesName.consignataire);},
                           child: DossierCard(
                               title: titles[index],
                               icon: icons[index],
@@ -158,7 +159,7 @@ class _DashboardInfinityPageState extends State<DashboardInfinityPage> {
                           )
                       );
                     },
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,//nbre de ligne
                     childAspectRatio: 4 / 1.8,
                     crossAxisSpacing: 20,
@@ -170,11 +171,10 @@ class _DashboardInfinityPageState extends State<DashboardInfinityPage> {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black26),
                   borderRadius: BorderRadius.circular(12),
                   color: Colors.white
                 ),
-                height: MediaQuery.of(context).size.height/3,
+                height: MediaQuery.of(context).size.height/3.3,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -210,11 +210,57 @@ class _DashboardInfinityPageState extends State<DashboardInfinityPage> {
                     ),
                   ],
                 ),
+              ),
+
+              Container(
+                padding: EdgeInsets.fromLTRB(10, AppDimensions.sizeboxHeight10, 0, AppDimensions.sizeboxHeight10),//30
+                margin: EdgeInsets.fromLTRB(0, AppDimensions.sizeboxHeight10, 0, 00),//30
+                height: MediaQuery.of(context).size.height/3,
+                //  height: 500,
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(10) ,color: Colors.white),
+                child: SfCircularChart(
+                    title:ChartTitle(
+                      alignment:ChartAlignment.near,
+                      text:'Répartition',
+                      textStyle: TextStyle(
+                        color: const Color(0xFF333333),
+                        fontSize: 20,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 0.20,
+                      ),
+                    ),
+
+                    tooltipBehavior: _tooltip,
+                    legend:Legend(
+                      isVisible: true,
+                      position: LegendPosition.right,
+                      overflowMode: LegendItemOverflowMode.wrap,
+                      // offset: Offset(20, 40)
+                    ),
+                    series: <CircularSeries<_ChartData, String>>[
+                      PieSeries(
+                        dataSource: List.generate(
+                          titles.length, (index) {
+                          return _ChartData(titles[index], dossiersForPieSerie[index], countColors[index]);
+                        },
+                        ).toList(),
+                        pointColorMapper:(_ChartData data,  _) => data.color,
+                        xValueMapper: (_ChartData data, _) => data.x,
+                        yValueMapper: (_ChartData data, _) => data.y,
+                        dataLabelMapper: (_ChartData data, _) => "${data.y.toStringAsFixed(2)} %",
+                        dataLabelSettings: DataLabelSettings(
+                          isVisible: true,
+                        ),
+                      )
+                    ]
+                ),
               )
             ],
           ),
         ),
       );
+
   }
 }
 
@@ -307,4 +353,12 @@ class ChartData {
   final int count;
 
   ChartData(this.hour, this.count);
+}
+
+class _ChartData {
+  _ChartData(this.x, this.y,this.color);
+
+  final String x;
+  final int y;
+  final Color color;
 }

@@ -1,9 +1,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gainde_management_dashboard/src/presentation/pages/orbus%20infinity/a_propos_orbus_infinity.dart';
-import 'package:gainde_management_dashboard/src/presentation/pages/orbus%20infinity/dashboard_performance_infinity.dart';
-import 'package:gainde_management_dashboard/src/presentation/pages/orbus%20infinity/perfomance_infinity_page.dart';
+import 'package:flutter_svg/svg.dart';
+import '/src/presentation/pages/orbus%20infinity/a_propos_orbus_infinity.dart';
+import '/src/presentation/pages/orbus%20infinity/dashboard_performance_infinity.dart';
+import '/src/presentation/pages/orbus%20infinity/perfomance_infinity_page.dart';
 import '/src/utils/const/routes/app_routes_name.dart';
 
 class OrbusInfinityPage extends StatefulWidget {
@@ -86,7 +87,14 @@ class _OrbusInfinityPageState extends State<OrbusInfinityPage> {
         leading: const BackButton(color: Colors.black),
         title: const Text(
           'Performance Infinity',
-          style: TextStyle(color: Colors.black),
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Color(0xFF333333),
+            fontSize: 32,
+            fontFamily: 'Lato',
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.32,
+          ),
         ),
         actions: [
           IconButton(
@@ -97,19 +105,118 @@ class _OrbusInfinityPageState extends State<OrbusInfinityPage> {
       ),
       body:pageList.elementAt(_currentIndex),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
-        items: const [
+        backgroundColor: const Color(0xFF1F5DAB),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white.withOpacity(.60),
+        selectedFontSize: 16,
+        unselectedFontSize: 14,
+        currentIndex: _currentIndex,
+        onTap: (index) => onItemTapped(index, context),
+        items:  [
           BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
-            label: 'Tableau de bord',
+            icon: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              decoration: ShapeDecoration(
+                color: _currentIndex==0? Colors.white:null,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 6,
+                children: [
+                  Container(
+                      width: 24,
+                      height: 24,
+                      child: SvgPicture.asset("asset/images/jam_document.svg",color: _currentIndex==0? Color(0xFF1F5DAB):Colors.white,)
+                  ),
+                  Text(
+                    'Tableau de bord',
+                    style: TextStyle(
+                      color: _currentIndex==0? Color(0xFF1F5DAB):Colors.white,
+                      fontSize: 20,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.20,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.pie_chart_outline),
-            label: 'Performance',
+            icon: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              decoration: ShapeDecoration(
+                color: _currentIndex==1? Colors.white:null,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 6,
+                children: [
+                  Container(
+                      width: 24,
+                      height: 24,
+                      child: SvgPicture.asset("asset/images/gg_chart.svg",color:_currentIndex==1? Color(0xFF1F5DAB):Colors.white,)
+                  ),
+                  Text(
+                    'Performance',
+                    style: TextStyle(
+                      color: _currentIndex==1? Color(0xFF1F5DAB):Colors.white,
+                      fontSize: 20,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.20,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.info_outline),
-            label: 'À propos',
+            icon: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              decoration: ShapeDecoration(
+                color: _currentIndex==2? Colors.white:null,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 6,
+                children: [
+                  Container(
+                    width: 24,
+                    height: 24,
+                    child: SvgPicture.asset("asset/images/ix_about.svg",color:_currentIndex==2? Color(0xFF1F5DAB):Colors.white,),
+                  ),
+                  Text(
+                    'A Propos',
+                    style: TextStyle(
+                      color: _currentIndex==2? Color(0xFF1F5DAB):Colors.white,
+                      fontSize: 20,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.20,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            label: '',
           ),
         ],
       ),

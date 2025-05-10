@@ -1,12 +1,12 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gainde_management_dashboard/src/presentation/pages/orbus/a_propos_orbus.dart';
-import 'package:gainde_management_dashboard/src/presentation/pages/orbus/perfomance_orbus_page.dart';
+import 'package:flutter_svg/svg.dart';
+import '/src/presentation/pages/orbus/a_propos_orbus.dart';
+import '/src/presentation/pages/orbus/perfomance_orbus_page.dart';
 import '/src/presentation/pages/orbus/dashboard_performance_orbus.dart';
 import '/src/utils/const/routes/app_routes_name.dart';
 
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 class OrbusPage extends StatefulWidget {
   const OrbusPage({super.key});
@@ -88,30 +88,140 @@ class _OrbusPageState extends State<OrbusPage> {
         leading: const BackButton(color: Colors.black),
         title: const Text(
           'Performance ORBUS',
-          style: TextStyle(color: Colors.black),
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Color(0xFF333333),
+            fontSize: 32,
+            fontFamily: 'Lato',
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.32,
+          ),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.search, color: Colors.black),
+            icon: const Icon(Icons.search, color: Colors.black,size: 40,),
             onPressed: () {},
           ),
         ],
       ),
       body:pageList.elementAt(_currentIndex),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
-        items: const [
+        backgroundColor: const Color(0xFF1F5DAB),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white.withOpacity(.60),
+        selectedFontSize: 16,
+        unselectedFontSize: 14,
+        currentIndex: _currentIndex,
+        onTap: (index) => onItemTapped(index, context), // Pass context to the function
+        items: [
           BottomNavigationBarItem(
+            icon: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              decoration: ShapeDecoration(
+                color: _currentIndex==0? Colors.white:null,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 6,
+                children: [
+                  Container(
+                    width: 24,
+                    height: 24,
+                    child: SvgPicture.asset("asset/images/jam_document.svg",color: _currentIndex==0? Color(0xFF1F5DAB):Colors.white,)
+                  ),
+                  Text(
+                    'Tableau de bord',
+                    style: TextStyle(
+                      color: _currentIndex==0? Color(0xFF1F5DAB):Colors.white,
+                      fontSize: 20,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.20,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            label: '',
+          ),
+          /*BottomNavigationBarItem(
             icon: Icon(Icons.dashboard),
             label: 'Tableau de bord',
+          ),*/
+           BottomNavigationBarItem(
+            icon: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              decoration: ShapeDecoration(
+                color: _currentIndex==1? Colors.white:null,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 6,
+                children: [
+                  Container(
+                    width: 24,
+                    height: 24,
+                    child: SvgPicture.asset("asset/images/gg_chart.svg",color:_currentIndex==1? Color(0xFF1F5DAB):Colors.white,)
+                  ),
+                  Text(
+                    'Performance',
+                    style: TextStyle(
+                      color: _currentIndex==1? Color(0xFF1F5DAB):Colors.white,
+                      fontSize: 20,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.20,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            label: '',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.pie_chart_outline),
-            label: 'Performance',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.info_outline),
-            label: 'À propos',
+           BottomNavigationBarItem(
+            icon: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              decoration: ShapeDecoration(
+                color: _currentIndex==2? Colors.white:null,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 6,
+                children: [
+                  Container(
+                    width: 24,
+                    height: 24,
+                    child: SvgPicture.asset("asset/images/ix_about.svg",color:_currentIndex==2? Color(0xFF1F5DAB):Colors.white,),
+                  ),
+                  Text(
+                    'A Propos',
+                    style: TextStyle(
+                      color: _currentIndex==2? Color(0xFF1F5DAB):Colors.white,
+                      fontSize: 20,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.20,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            label: '',
           ),
         ],
       ),

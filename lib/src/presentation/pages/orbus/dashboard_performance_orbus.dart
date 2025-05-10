@@ -22,7 +22,8 @@ class _DashboardOrbusPageState extends State<DashboardOrbusPage> {
   List<int> dossiers=[0,100,300,200,400];
   List<int> limiteFixe=[300,300,300,300,300];
   List<String> heures=['1h','2h','3h','4h','5h'];
-  List<int> dossiersForPieSerie=[230,140,210,97];
+
+  List<int> dossiersForPieSerie=[50,10,15,25];
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -65,14 +66,15 @@ class _DashboardOrbusPageState extends State<DashboardOrbusPage> {
   @override
   Widget build(BuildContext context) {
     final dateString = DateFormat('dd/MM/yyyy').format(selectedDate);
+
     List<String> filtreNames=["Période", "Du","Au"];
-    List<String> filtreValues=['Ce-mois', DateTime.now().month.toString(),DateTime.now().month.toString(),];
+    List<String> filtreValues=['Ce-mois', '06/05/2024','06/05/2024'];
     List<String> filtreIcons=['ion_caret-down-outline','Icon','Icon'];
 
     List<String> titles=["DRAV", "Assurances","Pôles publics","Banques",];
-    List<String> icons=['📑','🏢','🏛️','🏦',];
+    List<String> icons=['📑','🏢','🏛️','🏦'];
     List<int> count=[27,59,10,23,37,16];
-    List<Color> countColors= [AppColors.mainAppColor, Colors.orange,Colors.green,Color(0xff4C5CBE),Color(0xff5D99F4),Colors.purple,];
+    List<Color> countColors= [Color(0xFF2C5F9E), Color(0xFFE74C3C), Color(0xFF9B59B6), Color(0xFFF39C12)];
 
     return  Padding(
         padding: const EdgeInsets.all(16),
@@ -80,7 +82,7 @@ class _DashboardOrbusPageState extends State<DashboardOrbusPage> {
           child: Column(
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height/10,
+                height: MediaQuery.of(context).size.height/13,
                 width: MediaQuery.of(context).size.width,
                 child: GridView.builder(
                   itemCount:filtreNames.length,
@@ -159,7 +161,7 @@ class _DashboardOrbusPageState extends State<DashboardOrbusPage> {
                         )
                     );
                   },
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,//nbre de ligne
                     childAspectRatio: 4 / 1.8,
                     crossAxisSpacing: 20,
@@ -171,16 +173,23 @@ class _DashboardOrbusPageState extends State<DashboardOrbusPage> {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black26),
                     borderRadius: BorderRadius.circular(12),
                     color: Colors.white
                 ),
-                height: MediaQuery.of(context).size.height/3,
+                height: MediaQuery.of(context).size.height/3.5,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Nombre de dossiers",
-                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text(
+                      'Nombre de dossiers',
+                      style: TextStyle(
+                        color: const Color(0xFF333333),
+                        fontSize: 20,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 0.20,
+                      ),
+                    ),
                     const SizedBox(height: 10),
                     Expanded(
                       child: SfCartesianChart(
@@ -212,19 +221,30 @@ class _DashboardOrbusPageState extends State<DashboardOrbusPage> {
                   ],
                 ),
               ),
+
               Container(
-                padding: EdgeInsets.fromLTRB(0, AppDimensions.sizeboxHeight10, 0, AppDimensions.sizeboxHeight10),//30
-                margin: EdgeInsets.fromLTRB(AppDimensions.sizeboxWidth10, AppDimensions.sizeboxHeight10, AppDimensions.sizeboxWidth10, AppDimensions.sizeboxHeight10),//30
-                height: MediaQuery.of(context).size.height/1.5,
+                padding: EdgeInsets.fromLTRB(10, AppDimensions.sizeboxHeight10, 0, AppDimensions.sizeboxHeight10),//30
+                margin: EdgeInsets.only(top:AppDimensions.sizeboxHeight10),
+                height: MediaQuery.of(context).size.height/3,
                 //  height: 500,
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(10) ,color: Colors.white),
                 child: SfCircularChart(
-                    title:ChartTitle(text:'Répartition Nbre Conteneurs/Mois',textStyle: TextStyle(color: AppColors.mainAppColor)),
-                    //backgroundColor: Colors.white,
+                    title:ChartTitle(
+                        alignment:ChartAlignment.near,
+                        text:'Répartition',
+                        textStyle: TextStyle(
+                          color: const Color(0xFF333333),
+                          fontSize: 20,
+                          fontFamily: 'Lato',
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 0.20,
+                        ),
+                    ),
+
                     tooltipBehavior: _tooltip,
                     legend:Legend(
                       isVisible: true,
-                      position: LegendPosition.bottom,
+                      position: LegendPosition.right,
                       overflowMode: LegendItemOverflowMode.wrap,
                       // offset: Offset(20, 40)
                     ),
@@ -304,9 +324,9 @@ class DossierCard extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                        left: 13,
+                        left: 10,
                         top: 13,
-                        child:SvgPicture.asset("asset/images/$icon.svg")
+                        child:Text(icon,style: TextStyle(fontSize: 24,),)
                     ),
                   ],
                 ),

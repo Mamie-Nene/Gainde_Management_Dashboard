@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gainde_management_dashboard/src/presentation/pages/auth/login.dart';
 import 'package:gainde_management_dashboard/src/presentation/pages/home_pages.dart';
+import 'package:gainde_management_dashboard/src/presentation/pages/orbus%20infinity/consignataire.dart';
 import 'package:gainde_management_dashboard/src/presentation/pages/orbus%20infinity/orbus_infinity_home_page.dart';
 import 'package:gainde_management_dashboard/src/presentation/pages/orbus%20infinity/reporting_journalier/reporting_page.dart';
 import 'package:gainde_management_dashboard/src/presentation/pages/orbus/orbus_page.dart';
@@ -20,7 +21,7 @@ import '../../presentation/pages/orbus infinity/reporting_journalier/douane/repo
 
 // ----------------------------- Utils Pages  --------------------------------
 
-import '../../presentation/pages/orbus/pole/deec.dart';
+import '../../presentation/pages/orbus/pole/asecs.dart';
 import '../../presentation/pages/splash_first_page.dart';
 import '/src/presentation/pages/utils_pages/all_directories.dart';
 import '/src/utils/const/routes/app_routes_name.dart';
@@ -53,8 +54,12 @@ class RouteGenerator {
       case AppRoutesName.polePublicOrbus :
 
         return MaterialPageRoute( builder: (context) =>  PolePublic());
-      case AppRoutesName.deec :
-        return MaterialPageRoute( builder: (context) =>  DEEC());
+      case AppRoutesName.ascex :
+
+        return MaterialPageRoute( builder: (context) =>  ASEPEX());
+
+      case AppRoutesName.consignataire :
+        return MaterialPageRoute( builder: (context) => Consignataire());
 
       case AppRoutesName.repartitionBadParJourPage :
         return MaterialPageRoute( builder: (context) =>  const RepartitionBadParJour());
